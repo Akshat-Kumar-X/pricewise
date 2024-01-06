@@ -27,6 +27,12 @@ const AllProductsPage = () => {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const reversedFilteredProducts = allProducts
+    .filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .reverse();
+
   return (
     <section className="flex flex-col gap-5 px-6 md:px-20 py-14">
         <div className='bg-gray-100 p-10 rounded-2xl shadow-sm'>
@@ -57,7 +63,7 @@ const AllProductsPage = () => {
       </div>
        
       <div className="flex flex-wrap gap-x-8 gap-y-16  justify-center  gap-10 mt-7 w-full">
-        {filteredProducts.map((product) => (
+        {reversedFilteredProducts.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
