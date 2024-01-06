@@ -3,12 +3,11 @@ import Searchbar from "@/components/Searchbar"
 import HeroCarousel from "@/components/HeroCarousel"
 import { getAllProducts } from "@/lib/actions"
 import ProductCard from "@/components/ProductCard"
+import { Product } from "@/types"
 
 const Home = async () => {
-
   const allProducts = await getAllProducts()
-
-  const last8Products = allProducts.slice(-8).reverse();
+  const last8Products = (allProducts as any[] | undefined)?.slice(-8).reverse() || [];
 
   return (
     <>

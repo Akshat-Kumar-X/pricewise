@@ -5,7 +5,7 @@ import ProductCard from '@/components/ProductCard';
 import Image from 'next/image';
 
 const AllProductsPage = () => {
-  const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const AllProductsPage = () => {
     const fetchAllProducts = async () => {
       try {
         const products = await getAllProducts();
-        setAllProducts(products);
+        setAllProducts(products as any[]); // Type assertion here
       } catch (error) {
         console.error('Error fetching products:', error);
       }

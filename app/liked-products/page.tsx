@@ -5,8 +5,8 @@ import ProductCard from '@/components/ProductCard'; // Import your ProductCard c
 import Image from 'next/image';
 
 const Heartpage = () => {
-  const [likedProducts, setLikedProducts] = useState([]);
-  const [likedProductDetails, setLikedProductDetails] = useState([]);
+  const [likedProducts, setLikedProducts] = useState<string[]>([]);
+  const [likedProductDetails, setLikedProductDetails] = useState<any[]>([]);
 
   useEffect(() => {
     // Fetch liked product IDs from local storage
@@ -35,14 +35,14 @@ const Heartpage = () => {
     <section className="flex flex-col gap-5 px-6 md:px-20 py-14 ">
       <h2 className="section-text mb-0 pt-0">Liked Items</h2>
       <p className="small-text mt-0 pt-0">
-            All your liked items will display here:
-            <Image 
-              src="/assets/icons/arrow-right.svg"
-              alt="arrow-right"
-              width={16}
-              height={16}
-            />
-          </p>
+        All your liked items will display here:
+        <Image 
+          src="/assets/icons/arrow-right.svg"
+          alt="arrow-right"
+          width={16}
+          height={16}
+        />
+      </p>
       <div className="flex flex-wrap gap-10 mt-7 gap-x-8 gap-y-16 w-full min-[600px]:justify-center">
         {likedProductDetails.map((product) => (
           product && <ProductCard key={product._id} product={product} />
